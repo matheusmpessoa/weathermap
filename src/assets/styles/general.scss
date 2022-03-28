@@ -1,0 +1,13 @@
+body {
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

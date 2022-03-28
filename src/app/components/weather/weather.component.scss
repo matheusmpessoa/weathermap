@@ -1,0 +1,70 @@
+@import "~src/assets/styles/colors.scss";
+
+.wrapper {
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  background-image: linear-gradient($lightgray, $white);
+  text-align: center;
+
+  .content-search {
+    position: relative;
+    padding: 15px;
+    z-index: 2;
+    text-align: center;
+
+    .card {
+      position: relative;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-clip: border-box;
+      border: 0 solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+    }
+
+    .btn-search {
+      margin: 20px;
+    }
+  }
+
+  .content-weather {
+    .content-weather-info {
+      margin-top: 20px;
+      padding: 20px;
+
+      .content-weather-sub-info {
+        flex-direction: row;
+      }
+    }
+
+    .content-weather-details {
+      flex-direction: row;
+      content: normal;
+      font-size: 60px;
+      color: $black;
+      align-self: center;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 20px;
+
+      h2 {
+        margin-bottom: 5px;
+      }
+
+      .content-weather-details-img,
+      .content-weather-details-text {
+        display: inline-block;
+      }
+    }
+  }
+}

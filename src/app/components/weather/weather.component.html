@@ -1,0 +1,77 @@
+<weather-header></weather-header>
+
+<div class="wrapper">
+  <div class="content-search">
+    <mat-card class="alternate-theme">
+      <mat-form-field>
+        <mat-label>Search for some city!</mat-label>
+        <input matInput type="text" placeholder="Enter Cityname" #cityName class="form-control" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="btn-search" (click)="getCity(cityName.value)" type="submit">
+        Search
+      </button>
+      <button mat-raised-button color="primary" (click)="getLocation(this.coords)">
+        <i class="fas fa-crosshairs"></i>Current city
+      </button>
+    </mat-card>
+  </div>
+
+  <div class="content-weather">
+    <div class="content-weather-info" *ngIf='!weatherData.main && !weatherData.error'>
+      <div class="content-weather-city">
+        <h1>Welcome!</h1>
+        <h1>Please start by searching or use Current Location</h1>
+      </div>
+    </div>
+    <div class="content-weather-info" *ngIf='weatherData.error && !weatherData.main'>
+      <div class="content-weather-city">
+        <h1>Error <mat-icon>error</mat-icon></h1>
+        <h2>{{ weatherData.error.message }}</h2>
+      </div>
+    </div>
+
+    <div class="content-weather-info" *ngIf='weatherData.main'>
+      <div class="content-weather-city">
+        <h1>{{ weatherData.name }}, {{ weatherData.sys.country }}</h1>
+        <h3>Min: {{ weatherData.main.temp_min }} °C</h3>
+        <h3>Max: {{ weatherData.main.temp_max }} °C</h3>
+      </div>
+
+      <div class="content-weather-sub-info">
+        <div class="content-weather-details">
+          <div class="content-weather-details-img">
+            <img src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@2x.png" alt="Icon weather">
+          </div>
+          <div class="content-weather-details-text">
+            <h2>{{ weatherData.weather[0].main }}</h2>
+            <h3>{{ weatherData.weather[0].description }}</h3>
+          </div>
+        </div>
+
+        <div class="content-weather-details">
+          <div class="content-weather-details-text">
+            <h2>Feels Like <mat-icon>thermostat</mat-icon></h2>
+            <h3>{{ weatherData.main.feels_like }} °C</h3>
+          </div>
+        </div>
+
+        <div class="content-weather-details">
+          <div class="content-weather-details-text">
+            <h2>Humidity <mat-icon>water</mat-icon></h2>
+            <h3>{{ weatherData.main.humidity }} %</h3>
+          </div>
+        </div>
+
+        <div class="content-weather-details">
+          <div class="content-weather-details-text">
+            <h2>Wind Speed <mat-icon>air</mat-icon></h2>
+            <h3>{{ weatherData.wind.speed }} km/h</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
